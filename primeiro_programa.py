@@ -10,6 +10,7 @@ def menu():
     return opcao
 
 opcao = menu()
+
 if opcao.isdigit():
     opcao = int(opcao)
     if 1 <= opcao <= 5:
