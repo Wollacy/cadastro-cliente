@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main() {
+    int candidato1 = 0, candidato2 = 0, candidato3 = 0;
+    int voto;
+    char continuar;
+
+    do {
+        // Solicita o número do candidato
+        printf("Digite o número do candidato (1, 2 ou 3): ");
+        scanf("%d", &voto);
+
+        // Incrementa o contador correspondente ao candidato
+        switch (voto) {
+            case 1:
+                candidato1++;
+                break;
+            case 2:
+                candidato2++;
+                break;
+            case 3:
+                candidato3++;
+                break;
+            default:
+                printf("Número de candidato inválido!\n");
+        }
+
+        // Pergunta se o usuário deseja continuar votando
+        printf("Deseja continuar votando? (s/n): ");
+        scanf(" %c", &continuar);
+
+    } while (continuar == 's' || continuar == 'S');
+
+    // Exibe o resultado da votação
+    printf("\nResultado da votação:\n");
+    printf("Candidato 1: %d votos\n", candidato1);
+    printf("Candidato 2: %d votos\n", candidato2);
+    printf("Candidato 3: %d votos\n", candidato3);
+
+    return 0;
+}

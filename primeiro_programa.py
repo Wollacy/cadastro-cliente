@@ -1,22 +1,16 @@
-def menu():
-    print("Sistema de Cadastro de Clientes")
+while True:
+    print("\n=== Sistema de Cadastro ===")
     print("1. Cadastrar cliente")
     print("2. Listar clientes")
-    print("3. Editar cliente")
-    print("4. Excluir cliente")
-    print("5. Sair")
-    
+    print("3. Sair")
     opcao = input("Escolha uma opção: ")
-    return opcao
 
-opcao = menu()
-
-if opcao.isdigit():
-    opcao = int(opcao)
-    if 1 <= opcao <= 5:
-        print(f"Você escolheu a opção {opcao}")
+    if opcao == "1":
+        print("Opção de cadastrar cliente selecionada.")
+    elif opcao == "2":
+        print("Opção de listar clientes selecionada.")
+    elif opcao == "3":
+        print("Saindo do sistema. Até mais!")
+        break
     else:
-        print("Opção inválida!")
-else:
-    print("Por favor, digite um número válido.")
-
+        print("Opção inválida. Tente novamente.")
