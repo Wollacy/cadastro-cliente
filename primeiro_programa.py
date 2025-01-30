@@ -1,71 +1,42 @@
-clientes = []
+import banco
+import funcoes
 
+banco.criar_tabela()
+
+# Menu interativo
 while True:
     print("\nMenu Inicial:")
     print("1. Cadastrar cliente")
     print("2. Listar clientes")
     print("3. Alterar cliente")
     print("4. Remover cliente")
-    print("5. Sair")
+    print("5. Buscar cliente")
+    print("0. Sair")
     opcao = input("Escolha uma opção: ")
 
     if opcao == "1":
-        print("Cadastrar Cliente")
+        print("\nCadastrar Cliente\n")
         codigo = input("Digite o código do cliente: ")
-        
-        # Verificação para evitar códigos duplicados
-        existe = False
-        for cliente in clientes:
-            if cliente["codigo"] == codigo:
-                existe = True
-                break
-        if existe:
-            print(f"Erro: Já existe um cliente com o código {codigo}.")
-        else:
-            nome = input("Digite o nome do cliente: ")
-            cliente = {"codigo": codigo, "nome": nome}
-            clientes.append(cliente)
-            print(f"Cliente {codigo} - {nome} cadastrado com sucesso!") 
+        nome = input("Digite o nome do cliente: ")
+        funcoes.cadastrar_cliente(codigo, nome)
     elif opcao == "2":
-        print("Listar Clientes")
-        if not clientes:
-            print("Nenhum cliente cadastrado.")
-        else:
-            for cliente in clientes:
-                print(f"Código: {cliente['codigo']} - Nome: {cliente['nome']}")
+        print("\nListar Clientes\n")
+        funcoes.listar_clientes()
     elif opcao == "3":
-        print("Alterar Cliente")
+        print("\nAlterar Cliente\n")
         codigo = input("Digite o código do cliente que deseja alterar: ")
-        
-        cliente_encontrado = None
-        for cliente in clientes:
-            if cliente["codigo"] == codigo:
-                cliente_encontrado = cliente
-                break
-
-        if cliente_encontrado:
-            nome = input("Digite o novo nome do cliente: ")
-            cliente_encontrado["nome"] = nome
-            print(f"Cliente {codigo} alterado com sucesso!")
-        else:
-            print(f"Erro: Cliente com código {codigo} não encontrado.")
+        novo_nome = input("Digite o novo nome do cliente: ")
+        funcoes.alterar_cliente(codigo, novo_nome)
     elif opcao == "4":
-        print("Remover Cliente")
+        print("\nRemover Cliente\n")
         codigo = input("Digite o código do cliente que deseja remover: ")
-
-        cliente_encontrado = None
-        for cliente in clientes:
-            if cliente["codigo"] == codigo:
-                cliente_encontrado = cliente
-                break
-
-        if cliente_encontrado:
-            clientes.remove(cliente_encontrado)
-            print(f"Cliente {codigo} removido com sucesso!")
-        else:
-            print(f"Erro: Cliente com código {codigo} não encontrado.")
+        funcoes.remover_cliente(codigo)
     elif opcao == "5":
-        print("Saindo do sistema. Até mais!")
+        print("\nBuscar Cliente\n")
+        termo = input("Digite o código ou nome do cliente: ")
+        funcoes.buscar_cliente(termo)
+    elif opcao == "0":
+        print("\nSaindo do sistema. Até mais!\n")
         break
     else:
-        print("A opção escolhida não existe. Por favor, tente novamente.")
+        print("\nA opção escolhida não existe. Por favor, tente novamente.")
